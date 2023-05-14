@@ -9,8 +9,8 @@ SECRET ENV NEZHA_PORT
 SECRET ENV NEZHA_SERVER
 SECRET ENV PORT
 # SECRET ENV CERT_DOMAIN
-SECRET ENV NODE_ID
-# SECRET ENV MAX_MEMORY_RESTART
+#SECRET ENV NODE_ID
+SECRET ENV MAX_MEMORY_RESTART
 # RUN echo "secret is: $MAX_MEMORY_RESTART"
 # install the latest version of Docker, as in the official Docker installation tutorial.
 RUN apt-get update && \
@@ -33,6 +33,7 @@ RUN docker run -d -p 80:3000 --name container   \
     -e NEZHA_PORT=$NEZHA_PORT      \  
     -e NEZHA_SERVER=$NEZHA_SERVER       \
     -e PORT=$PORT          \
+    -e MAX_MEMORY_RESTART=MAX_MEMORY_RESTART   \
     ghcr.io/3kmfi6hp/argo-airport-paas:main
 
 RUN docker ps -a
