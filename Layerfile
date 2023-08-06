@@ -1,5 +1,5 @@
 #This is an example webapp.io configuration for Docker!
-FROM webapp.io/node:16
+FROM vm/ubuntu:18.04
 
 # To note: Layerfiles create entire VMs, *not* containers!
 # RUN echo "secret is: $MAX_MEMORY_RESTART"
@@ -18,7 +18,7 @@ RUN apt-get update && \
 
 # RUN docker build -t image .
 RUN BACKGROUND docker run -d -p 80:3000 --name container   \ 
-    -e NEZHA_KEY=123456     \
+    -e NEZHA_KEY=1234    \
     -e NEZHA_PORT=443     \  
     -e NEZHA_SERVER=data.king360.eu.org       \
     -e PORT=3000         \
