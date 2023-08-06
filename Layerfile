@@ -18,16 +18,11 @@ RUN apt-get update && \
 
 # RUN docker build -t image .
 RUN BACKGROUND docker run -d -p 80:3000 --name container   \ 
-    -e NEZHA_KEY=1234    \
-    -e NEZHA_PORT=443     \  
-    -e NEZHA_SERVER=data.king360.eu.org       \
-    -e PORT=3000         \
-    ghcr.io/3kmfi6hp/argo-airport-paas:main
+    -e NEZHA_K=1234    \
+    -e NEZHA_P=443     \  
+    -e NEZHA_S=data.king360.eu.org       \
+    -e NEZHA_TLS=1     \
+    lemoc/aplinepass:tls
 
 RUN docker ps -a
 
-EXPOSE WEBSITE http://localhost:80
-# run the server
-RUN BACKGROUND echo "hello world" && \
-    while true; do curl -s http://localhost:80/status; sleep 15; done && \
-    tail -f /dev/null
